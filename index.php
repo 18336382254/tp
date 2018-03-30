@@ -19,8 +19,8 @@ define('APP_DEBUG',True);
 
 // 定义应用目录
 define('APP_PATH','./Application/');
-
-define('CONF_EXT','.ini');
+//
+//define('CONF_EXT','.ini');
 
 //define('BIND_MODULE','Admin');
 
