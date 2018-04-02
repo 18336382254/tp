@@ -132,4 +132,34 @@ class FormController extends Controller{
 //            $res = $Data->sum('id');
 //            var_dump($res);
         }
+        //连贯操作
+        public function coherentSql(){
+//            $Data = M('Data');
+//            $con['id'] = array('gt',1);
+//            $res = $Data->where($con)->order('data')->limit('5')->select();
+//            var_dump($res);
+            //$Data = M('Data');
+//            $res = $Data->where('id=1')->field('id,data')->find();
+//            var_dump($res);
+           // $Data->where('id=1')->delete();
+            $Data = M('Form');
+            //跨表操作
+            //$res = $Data->table('think_form')->where('id>1')->select();
+            //var_dump($res);
+            //跨库操作
+            //$res = $Data->table('yxt.yxt_grade')->where('id=2')->select();
+            //var_dump($res);
+            //这里有问题
+            //$res = $Data->table(array('think_data'=>'data','think_form'=>'content'))->where('id>1')->select();
+           // var_dump($res);
+            //field用法
+            //$res = $Data->field('id',true)->select();
+            //var_dump($res);
+            //desc和acs
+            //desc是降序acs是升序
+            //page分页
+            //$res = $Data->page(2)->limit(2)->select();
+            $res= $Data->field('id')->group('create_time')->having('count(id)>2')->select();
+            var_dump($res);
+        }
 }
