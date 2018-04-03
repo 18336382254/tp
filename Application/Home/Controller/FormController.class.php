@@ -159,7 +159,33 @@ class FormController extends Controller{
             //desc是降序acs是升序
             //page分页
             //$res = $Data->page(2)->limit(2)->select();
-            $res= $Data->field('id')->group('create_time')->having('count(id)>2')->select();
-            var_dump($res);
+            //错的
+//            $res= $Data->field('id')->group('create_time')->having('count(id)>2')->select();
+//            var_dump($res);
+        }
+        //变量
+        public function variable(){
+            //I方法获取变量
+            echo I('get.id'); // 相当于 $_GET['id']
+            echo I('get.name'); // 相当于 $_GET['name']
+
+            //带默认值的获取变量
+            echo I('get.id',0); // 如果不存在$_GET['id'] 则返回0
+            echo I('get.name',''); // 如果不存在$_GET['name'] 则返回空字符串
+
+            // 采用htmlspecialchars方法对$_GET['name'] 进行过滤，如果不存在则返回空字符串
+            echo I('get.name','','htmlspecialchars');
+
+            // 获取整个$_GET 数组
+            I('get.');
+
+            //由于param类型是I函数默认获取的变量类型，因此事实上param变量类型的写法可以简化为：
+            I('id'); // 等同于 I('param.id')
+            I('name'); // 等同于 I('param.name')
+            //path类型变量可以用于获取PATHINFO方式的URL参数
+            echo I('path.1'); // 输出2013
+            echo I('path.2'); // 输出06
+            echo I('path.3'); // 输出01
+
         }
 }
